@@ -35,7 +35,7 @@ variable "capacity" {
 variable "api_version" {
   type        = string
   description = "Azure OpenAI API version"
-  default     = "2024-02-01"
+  default     = "2023-03-15-preview"
 }
 
 variable "public_network_access" {
@@ -132,13 +132,14 @@ resource "azurerm_cognitive_account_rai_policy" "pii_filter" {
   count                = var.enable_pii_filter ? 1 : 0
   name                 = "${local.deploymentName}-pii-filter"
   cognitive_account_id = azurerm_cognitive_account.openai.id
+  base_policy_name     = "Microsoft.Default"
 
   content_filter {
-    name                  = "pii"
-    blocking_enabled      = true
-    enabled               = true
-    severity_threshold    = "Low"
-    source_type           = "Output"
+    name             = "pii"
+    block_enabled    = true
+    filter_enabled   = true
+    severity_threshold = "Low"
+    source           = "Output"
   }
 }
 
