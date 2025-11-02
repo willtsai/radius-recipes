@@ -35,7 +35,7 @@ variable "capacity" {
 variable "api_version" {
   type        = string
   description = "Azure OpenAI API version"
-  default     = "2023-03-15-preview"
+  default     = "2024-02-15-preview"
 }
 
 variable "public_network_access" {
