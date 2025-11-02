@@ -139,7 +139,7 @@ resource "azurerm_cognitive_account_rai_policy" "pii_filter" {
     block_enabled    = true
     filter_enabled   = true
     severity_threshold = "Low"
-    source           = "Output"
+    source           = "Completion"
   }
 }
 
